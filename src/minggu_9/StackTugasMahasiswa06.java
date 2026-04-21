@@ -7,8 +7,8 @@ public class StackTugasMahasiswa06 {
  
     // Konstruktor berparameter
     public StackTugasMahasiswa06(int size) {
-        this.size = size;
-        stack = new mahasiswa06[size];
+        this.size = size; // ukuran stack = 5
+        stack = new mahasiswa06[size]; //array berkapasitas 5 untuk menyimpan objek mahasiswa
         top = -1;
     }
  
@@ -61,15 +61,40 @@ public class StackTugasMahasiswa06 {
             return null;
         }
     }
- 
-    // Tampilkan semua tugas dalam stack / method print
-    public void print() {
-        for (int i = top; i >= 0; i--) {
-            System.out.println(stack[i].nama + "\t" + stack[i].nim + "\t" + stack[i].kelas);
-        }
-        System.out.println("");
-    }   
+
+    // Tambahkan method ini untuk melihat tugas paling bawah (pertanyaan 4)
+    public mahasiswa06 peekBottom() {
+        if (!isEmpty()) {
+        return stack[0]; // index 0 = mahasiswa pertama yang mengumpulkan
+    } else {
+        System.out.println("Stack kosong! Tidak ada tugas yang dikumpulkan");
+        return null;
+     }
+    }
+    // pertanyaan 5: method untuk menghitung jumlah tugas yang ada di stack
+    public int hitungTugas() {
+    return top + 1; // top=-1 saat kosong, jadi +1 untuk mendapat jumlah sebenarnya
 }
-
  
-
+   // method print untuk menampilkan semua tugas yang ada di stack (pertanyaaan 1)
+    public void print() {
+    for (int i = top; i >= 0; i--) {  // dari atas ke bawah
+        System.out.println(stack[i].nama + "\t" + stack[i].nim + "\t" + stack[i].kelas);
+    }
+    System.out.println("");
+}
+ // PERCOBAAN 2: method untuk mengkonversi bilangan desimal ke biner menggunakan stack
+    public String konversiDesimalKeBiner(int nilai) {
+        StackKonversi06 stack = new StackKonversi06();
+        while (nilai > 0) {
+            int sisa = nilai % 2;
+            stack.push(sisa);
+            nilai = nilai / 2;
+        }
+        String biner = new String();
+        while (!stack.isEmpty()) {
+            biner += stack.pop();
+        }
+        return biner;
+    }
+}
