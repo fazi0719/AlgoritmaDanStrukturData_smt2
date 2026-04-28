@@ -29,11 +29,21 @@ public class QueueMain06 {
             pilih = sc.nextInt();
             switch (pilih) {
                 case 1:
+                    if (Q.IsFull()) {
+                    System.out.println("Queue sudah penuh (overflow) - Program dihentikan!");
+                    sc.close();
+                    System.exit(1);  // Menghentikan program
+                    }
                     System.out.print("Masukkan data baru: ");
                     int dataMasuk = sc.nextInt();
                     Q.Enqueue(dataMasuk);
                     break;
                 case 2:
+                    if (Q.IsEmpty()) {
+                    System.out.println("Queue masih kosong (underflow) - Program dihentikan!");
+                    sc.close();
+                    System.exit(1);  // Menghentikan program
+                    }
                     int dataKeluar = Q.Dequeue();
                     if (dataKeluar != 0) {
                         System.out.println("Data yang dikeluarkan: " + dataKeluar);
