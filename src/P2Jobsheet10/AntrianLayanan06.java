@@ -72,5 +72,15 @@ public class AntrianLayanan06 {
     public int getJumlahAntrian() {
         return size;
     }
- 
+
+     // Soal 2.2.3 - method LihatAkhir
+    public void lihatAkhir() {
+        if (isEmpty()) {
+            System.out.println("Antrian kosong.");
+        } else {
+            System.out.print("Mahasiswa paling belakang: ");
+            System.out.println("NIM - NAMA - PRODI - KELAS");
+            data[rear].tampilkanData();
+}
+}
 }
