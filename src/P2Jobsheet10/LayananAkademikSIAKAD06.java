@@ -49,6 +49,10 @@ public class LayananAkademikSIAKAD06 {
                 case 5:
                     System.out.println("Jumlah dalam antrian: " + antrian.getJumlahAntrian());
                     break;
+                case 6:
+                    // Soal 2.2.3
+                    antrian.lihatAkhir();
+                    break;
                 case 0:
                     System.out.println("Terima kasih.");
                     break;
