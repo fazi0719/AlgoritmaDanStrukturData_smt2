@@ -51,7 +51,7 @@ public class SingleLinkedList06 {
     }
 
     
-    //  method insertAfter 
+    //  method insertAfter (insertAfter adalah menyisipkan node setelah node dengan nama tertentu)
     public void insertAfter(String key, mahasiswa06 input) {
         nodeMahasiswa06 ndInput = new nodeMahasiswa06(input, null);
         nodeMahasiswa06 temp = head;
@@ -69,7 +69,7 @@ public class SingleLinkedList06 {
     }
 
     
-    //  method insertAt (menyisipkan node pada indeks tertentu)
+    //  method insertAt (adalah menyisipkan node pada indeks tertentu, indeks dimulai dari 0)
     public void insertAt(int index, mahasiswa06 input) {
         if (index < 0) {
             System.out.println("indeks salah");
@@ -85,7 +85,101 @@ public class SingleLinkedList06 {
                 tail = temp.next;
             }
         }
+        }
+        // Praktikum 2 - Single Linked List
+         //  getData – akses data pada indeks tertentu
+    
+    public void getData(int index) {
+        nodeMahasiswa06 tmp = head;
+        for (int i = 0; i < index; i++) {
+            tmp = tmp.next;
+        }
+        tmp.data.tampilInformasi();
+    }
+ 
+     
+    //  indexOf – cari indeks berdasarkan nama
+    //  method indexOf (adalah mencari indeks node berdasarkan nama, jika tidak ditemukan maka mengembalikan nilai -1)
+    public int indexOf(String key) {
+        nodeMahasiswa06 tmp = head;
+        int index = 0;
+        while (tmp != null && !tmp.data.nama.equalsIgnoreCase(key)) {
+            tmp = tmp.next;
+            index++;
+        }
+        if (tmp == null) {
+            return -1;
+        } else {
+            return index;
+        }
+    }
+     
+    //  removeFirst – hapus node pertama 
+    public void removeFirst() {
+        if (isEmpty()) {
+            System.out.println("Linked List masih Kosong, tidak dapat dihapus!");
+        } else if (head == tail) {
+            head = tail = null;
+        } else {
+            head = head.next;
+        }
+    }
+ 
+    //  removeLast – hapus node terakhir
+    public void removeLast() {
+        if (isEmpty()) {
+            System.out.println("Linked List masih Kosong, tidak dapat dihapus!");
+        } else if (head == tail) {
+            head = tail = null;
+        } else {
+            nodeMahasiswa06 temp = head;
+            while (temp.next != tail) {
+                temp = temp.next;
+            }
+            temp.next = null;
+            tail = temp;
+        }
+    }
+ 
+    //  remove – hapus node berdasarkan nama (key)
+    public void remove(String key) {
+        if (isEmpty()) {
+            System.out.println("Linked List masih Kosong, tidak dapat dihapus!");
+        } else {
+            nodeMahasiswa06 temp = head;
+            while (temp != null) {
+                if ((temp.data.nama.equalsIgnoreCase(key)) && (temp == head)) {
+                    this.removeFirst();
+                    break;
+                } else if (temp.data.nama.equalsIgnoreCase(key)) {
+                    temp.next = temp.next.next;
+                    if (temp.next == null) {
+                        tail = temp;
+                    }
+                    break;
+                }
+                temp = temp.next;
+            }
+        }
+    }
+ 
+
+    //  removeAt – hapus node pada indeks tertentu
+    public void removeAt(int index) {
+        if (index == 0) {
+            removeFirst();
+        } else {
+            nodeMahasiswa06 temp = head;
+            for (int i = 0; i < index - 1; i++) {
+                temp = temp.next;
+            }
+            temp.next = temp.next.next;
+            if (temp.next == null) {
+                tail = temp;
+            }
+        }
     }
 }
+
     
 
