@@ -10,8 +10,9 @@ public class MainRoyalDelish06 {
         DLLPembeli06 antrean = new DLLPembeli06();
         DLLPesanan06 daftarPesanan = new DLLPesanan06();
 
-        // variabel nomor antrean otomatis dimulai dari 1
-        int nomorAntrean = 1;
+         antrean.tambahAntrian("Ainra", "08224500000");
+        antrean.tambahAntrian("Danra", "08224511111");
+        antrean.tambahAntrian("Sanri", "08224522222");
 
         int pilih;
 
@@ -25,7 +26,7 @@ public class MainRoyalDelish06 {
             System.out.println("2. Cetak Antrian");
             System.out.println("3. Hapus Antrian & Input Pesanan");
             System.out.println("4. Laporan Pesanan");
-            System.out.println("5. Keluar");
+            System.out.println("0. Keluar");
             System.out.println("=================================");
 
             System.out.print("Pilih menu : ");
@@ -47,21 +48,8 @@ public class MainRoyalDelish06 {
                     System.out.print("No HP : ");
                     String hp = sc.nextLine();
 
-                    // membuat object pembeli
-                    Pembeli06 pb = new Pembeli06(
-                            nomorAntrean,
-                            nama,
-                            hp);
-
-                    // menambahkan pembeli ke linked list antrean
-                    antrean.addLast(pb);
-
-                    System.out.println(
-                            "Nomor antrian : "
-                            + nomorAntrean);
-
-                    nomorAntrean++;
-
+               //Menambahkan pembeli ke antrean
+                antrean.tambahAntrian(nama,hp);
                     break;
 
                 case 2:
@@ -111,7 +99,7 @@ public class MainRoyalDelish06 {
 
                     break;
 
-                case 5:
+                case 0:
                     // keluar dari program
                     System.out.println();
                     System.out.println("Program selesai");
@@ -122,7 +110,7 @@ public class MainRoyalDelish06 {
                     System.out.println("Menu tidak tersedia");
             }
 
-        } while (pilih != 5);
+        } while (pilih != 0);
     }
 }
 
