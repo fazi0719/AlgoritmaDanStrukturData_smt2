@@ -1,8 +1,9 @@
 package CM_2;
 
 public class DLLPembeli06 {
-     NodePembeli06 head;
+    NodePembeli06 head;
     NodePembeli06 tail;
+    int nomorAntrean=1;
 
     // /Konstruktor Kondisi awal linked list kosong
     public DLLPembeli06() {
@@ -10,6 +11,18 @@ public class DLLPembeli06 {
         tail = null;
     }
 
+    // Method tambahAntrian digunakan untuk menambahkan pembeli ke dalam antrean
+    public void tambahAntrian(String namaPembeli,String noHp) {
+
+    // Membuat object pembeli menggunakan konstruktor
+    Pembeli06 pb =new Pembeli06(nomorAntrean,namaPembeli,noHp);
+
+    // Menambahkan pembeli ke dalam linked list antrean
+    addLast(pb);
+    System.out.println("Antrian berhasil ditambahkan dengan nomor " + nomorAntrean);
+    // Nomor antrean bertambah otomatis setiap kali ada pembeli baru
+    nomorAntrean++;
+}
     // Method isEmpty digunakan untuk mengecek apakah linked list kosong
     boolean isEmpty() {
         return head == null;
