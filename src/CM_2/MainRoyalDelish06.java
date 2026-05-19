@@ -10,9 +10,10 @@ public class MainRoyalDelish06 {
         DLLPembeli06 antrean = new DLLPembeli06();
         DLLPesanan06 daftarPesanan = new DLLPesanan06();
 
-         antrean.tambahAntrian("Ainra", "08224500000");
+        antrean.tambahAntrian("Ainra", "08224500000");
         antrean.tambahAntrian("Danra", "08224511111");
         antrean.tambahAntrian("Sanri", "08224522222");
+        antrean.tambahAntrian("Budi", "08224533333");
 
         int pilih;
 
@@ -26,6 +27,7 @@ public class MainRoyalDelish06 {
             System.out.println("2. Cetak Antrian");
             System.out.println("3. Hapus Antrian & Input Pesanan");
             System.out.println("4. Laporan Pesanan");
+            System.out.println("5. Batalkan Pesanan"); 
             System.out.println("0. Keluar");
             System.out.println("=================================");
 
@@ -79,14 +81,14 @@ public class MainRoyalDelish06 {
                     int harga = sc.nextInt();
                     sc.nextLine();
 
-        
+                    // input pesanan 
                     Pesanan06 psn = new Pesanan06(kode,namaPesanan,harga);
 
                     // menambahkan pesanan ke linked list daftarPesanan
                     daftarPesanan.addLast(psn);
                     System.out.println(dipanggil.namaPembeli + " telah memesan " + namaPesanan); 
                     }
-                break;
+                break; 
 
                 case 4:
 
@@ -94,9 +96,23 @@ public class MainRoyalDelish06 {
                     System.out.println();
                     daftarPesanan.print();
 
-                    System.out.println(
-                            "Jumlah pesanan : " + daftarPesanan.countPesanan());
+                    System.out.println("Jumlah pesanan : " + daftarPesanan.countPesanan());
 
+                    break;
+
+                case 5:
+
+                    if (daftarPesanan.countPesanan() < 3) {
+                        System.out.println("Pesanan harus minimal 3 untuk pembatalan!");
+                        break;
+                    }
+
+                    System.out.print("Masukkan kode pesanan yang dibatalkan: ");
+                    int kodeHapus = sc.nextInt();
+                    sc.nextLine();
+
+                    // memanggil method hapus
+                    daftarPesanan.batalkanPesanan(kodeHapus);
                     break;
 
                 case 0:
@@ -106,7 +122,6 @@ public class MainRoyalDelish06 {
                     break;
 
                 default:
-
                     System.out.println("Menu tidak tersedia");
             }
 
